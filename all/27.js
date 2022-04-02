@@ -31,5 +31,21 @@
     return nums
 };
 
-let nums = [0,1,2,2,3,0,4,2], val = 2
+/* 用splice api做太作弊了。这才是正确的考点，利用双指针来实现数据的移动。
+正常情况下 nums[slow] = nums[fast] 不会产生任何影响，因为slow 和 fast相等。
+但是遇到 nums[fast] == val 的时候，我们就让 fast++
+这样他们之间就有距离了，然后同样执行 nums[slow] = nums[fast] 实现覆盖之前的val */
+var removeElement = function(nums, val) {
+    let slow = 0, fast = 0
+    while (fast < nums.length) {
+        if (nums[fast] == val) {
+            fast++
+            continue
+        }
+        nums[slow++] = nums[fast++]
+    }
+    console.log(nums)
+    return slow
+};
+let nums = [3,2,2,3], val = 3
 console.log(removeElement(nums, val))
