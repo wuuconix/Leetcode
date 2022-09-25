@@ -14,7 +14,7 @@ function postorderTraversal_recur(root: TreeNode | null): number[] {
   return ans
 }
 
-function postorderTraversal(root: TreeNode | null): number[] {
+function postorderTraversal_norecur(root: TreeNode | null): number[] {
   if (root == null) {
     return []
   }
@@ -27,4 +27,25 @@ function postorderTraversal(root: TreeNode | null): number[] {
     node.right && stack.push(node.right)
   }
   return ans.reverse()
+}
+
+function postorderTraversal(root: TreeNode | null): number[] {
+  if (root == null) {
+    return []
+  }
+  const ans: number[] = []
+  const stack: (TreeNode | null)[] = [root]
+  while (stack.length != 0) {
+    let node = stack.pop()
+    if (node != null) {
+      stack.push(node)
+      stack.push(null)
+      node.right && stack.push(node.right)
+      node.left && stack.push(node.left)
+    } else {
+      node = stack.pop()!
+      ans.push(node.val)
+    }
+  }
+  return ans
 }
