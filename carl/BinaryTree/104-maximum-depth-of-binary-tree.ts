@@ -1,6 +1,6 @@
 import { TreeNode } from "./type"
 
-function maxDepth(root: TreeNode | null): number {
+function maxDepth_level(root: TreeNode | null): number {
   if (!root) {
     return 0
   }
@@ -16,4 +16,11 @@ function maxDepth(root: TreeNode | null): number {
     }
   }
   return ans
+}
+
+function maxDepth(root: TreeNode | null): number {
+  if (!root) {
+    return 0
+  }
+  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
 }

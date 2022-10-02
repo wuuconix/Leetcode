@@ -29,5 +29,13 @@ class Node2 {
     this.next = (next===undefined ? null : next)
   }
 }
+class Node3 {
+  val: number
+  children: Node3[]
+  constructor(val?: number, children?: Node3[]) {
+    this.val = (val===undefined ? 0 : val)
+    this.children = (children===undefined ? [] : children)
+  }
+}
 
-export { TreeNode, Node, Node2 }
+export { TreeNode, Node, Node2, Node3 }
