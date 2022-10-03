@@ -1,6 +1,6 @@
 import { TreeNode } from "./type"
 
-function minDepth(root: TreeNode | null): number {
+function minDepth_level(root: TreeNode | null): number {
   if (!root) {
     return 0
   }
@@ -19,4 +19,17 @@ function minDepth(root: TreeNode | null): number {
     }
   }
   return depth
+}
+
+function minDepth(root: TreeNode | null): number {
+  if (!root) {
+    return 0
+  }
+  if (!root.left && root.right) {
+    return 1 + minDepth(root.right)
+  }
+  if (root.left && !root.right) {
+    return 1 + minDepth(root.left)
+  }
+  return 1 + Math.min(minDepth(root.left), minDepth(root.right))
 }
