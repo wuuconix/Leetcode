@@ -17,6 +17,7 @@ function lowestCommonAncestor_recur(root: TreeNode | null, p: TreeNode | null, q
   } else {
     return root
   }
+  return null
 }
 
 function lowestCommonAncestor(root: TreeNode | null, p: TreeNode | null, q: TreeNode | null): TreeNode | null {
